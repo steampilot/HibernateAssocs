@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping
+        PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bo.City" table="city">
+        <id name="CityId" column="city_id" type="long">
+            <generator class="increment"/>
+        </id>
+        <property name="Zip" column="zip" type="string"/>
+        <property name="Name" column="name" type="string"/>
+
+        <list name="Employees" table="employee" cascade="all">
+            <key>
+                <column name="city_id" not-null="true"/>
+            </key>
+            <list-index column="indx"/>
+            <one-to-many class="bo.Employee"/>
+        </list>
+
+        <list name="Companies" table="company" cascade="all">
+            <key>
+                <column name="company_id" not-null="true"/>
+            </key>
+            <list-index column="indx"/>
+            <one-to-many class="bo.Company"/>
+        </list>
+
+    </class>
+</hibernate-mapping>
+

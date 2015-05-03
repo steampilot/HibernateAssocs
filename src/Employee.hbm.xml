@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping
+        PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bo.Employee" table="employee">
+        <id name="EmployeeId" column="employee_id" type="long">
+            <generator class="increment"/>
+        </id>
+        <property name="Name" column="name" type="string"/>
+        <property name="Street" column="street" type="string"/>
+        <many-to-one name="City" class="bo.City" fetch="join">
+            <column name="city_id" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="Company" class="bo.Company" fetch="join">
+            <column name="company_id" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>
+

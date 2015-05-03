@@ -1,0 +1,33 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost/hybernatetest</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password"></property>
+        <property name="hibernate.connection.pool_size">4</property>
+
+        <property name="show_sql">true</property>
+
+        <property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+
+        <property name="transaction.factory_class">
+            org.hibernate.transaction.JDBCTransactionFactory
+        </property>
+
+        <property name="hibernate.cache.provider_class">
+            org.hibernate.cache.HashtableCacheProvider
+        </property>
+
+        <property name="hibernate.hbm2ddl.auto">create-drop</property>
+
+        <!-- Mapping files -->
+        <mapping resource="City.hbm.xml"/>
+        <mapping resource="Employee.hbm.xml"/>
+        <mapping resource="Company.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>
