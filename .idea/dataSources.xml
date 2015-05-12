@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="3762088677">
+  <component name="DataSourceManagerImpl" format="xml" hash="34599393">
     <data-source source="LOCAL" name="MySQL - hybernatetest@localhost" uuid="4692e484-5850-4489-b307-383d6d4160cd">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
@@ -15,5 +15,17 @@
       </driver-properties>
       <libraries />
     </data-source>
+    <data-source source="LOCAL" name="hibernate.cfg.xml" uuid="1d608c04-51ea-4c02-ad4c-26f26043e705">
+      <driver-ref>mysql</driver-ref>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost/hybernatetest</jdbc-url>
+      <user-name>root</user-name>
+      <libraries>
+        <library>
+          <url>file://$PROJECT_DIR$/libs/mysql-connector-java-5.1.13-bin.jar</url>
+        </library>
+      </libraries>
+    </data-source>
   </component>
 </project>
+
