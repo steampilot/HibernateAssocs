@@ -1,6 +1,7 @@
 package test;
 
 import bo.Company;
+import bo.Lang;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -14,6 +15,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import bo.City;
@@ -68,11 +70,23 @@ public class HibernateTest {
 		city.addCompany(company);
 		city2.addCompany(company2);
 
+        Lang lang = new Lang("de-CH", "Swiss German");
+        Lang lang2 = new Lang ("en-US", "American English");
+
+        employee.addLanguage(lang);
+        employee.addLanguage(lang2);
+
 		try {
 			trans = session.beginTransaction();
 
-			session.save(city);
-			session.save(city2);
+            session.save(city);
+            session.save(city2);
+            session.save(lang);
+            session.save(lang2);
+            session.save(company);
+            session.save(company2);
+            session.save(employee);
+            session.save(employee2);
 			trans.commit();
 
 		} catch (HibernateException e) {
@@ -81,8 +95,11 @@ public class HibernateTest {
 				e.printStackTrace();
 			}
 		}
-		assertTrue(city.getCityId() > 0);
+
+		assertTrue(city.getCityId() == 1 );
 		assertTrue(company.getCity().getCityId() == city.getCityId());
+        assertTrue(lang.getLangId() > 0);
+        assertTrue(employee.getLanguages().contains(lang));
 		
 	}
 }

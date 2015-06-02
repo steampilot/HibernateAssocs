@@ -1,5 +1,8 @@
 package bo;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Employee {
 
 	private long employeeId;
@@ -7,6 +10,7 @@ public class Employee {
 	private String street;
 	private City city;
 	private Company company;
+    private Set<Lang> languages = new HashSet<Lang>();
 
 	public Employee() {
 
@@ -63,5 +67,13 @@ public class Employee {
 		this.city = city;
 	}
 
-
+    public Set<Lang> getLanguages() {
+        return languages;
+    }
+    public void setLanguages(Set<Lang> languages){
+        this.languages = languages;
+    }
+    public void addLanguage(Lang language){
+        this.languages.add(language);
+    }
 }

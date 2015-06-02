@@ -11,7 +11,7 @@
         <property name="Zip" column="zip" type="string"/>
         <property name="Name" column="name" type="string"/>
 
-        <list name="Employees" table="employee" cascade="all">
+        <list name="Employees" table="employee">
             <key>
                 <column name="city_id" not-null="true"/>
             </key>
@@ -19,7 +19,7 @@
             <one-to-many class="bo.Employee"/>
         </list>
 
-        <list name="Companies" table="company" cascade="all">
+        <list name="Companies" table="company">
             <key>
                 <column name="company_id" not-null="true"/>
             </key>

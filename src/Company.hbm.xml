@@ -14,7 +14,7 @@
             <column name="city_id" not-null="true"/>
         </many-to-one>
 
-        <list name="Employees" table="employee" cascade="all">
+        <list name="Employees" table="employee">
             <key>
                 <column name="company_id" not-null="true"/>
             </key>
