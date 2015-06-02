@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping
+        PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="bo.Lang" table="lang">
+        <id name="langId" column="lang_id" type="long">
+            <generator class="increment"/>
+        </id>
+        <property name="Iso" column="iso" type="string"/>
+        <property name="Name" column="name" type="string"/>
+        <set name="Employees" table="employee_lang" inverse="true">
+            <key column="lang_id"/>
+            <many-to-many class="bo.Employee" column="employee_id"/>
+        </set>
+
+
+    </class>
+</hibernate-mapping>
+
