@@ -72,17 +72,18 @@ public class HibernateTest {
 
         employee.addLanguage(lang);
         employee.addLanguage(lang2);
+        lang.addEmployee(employee);
+        lang2.addEmployee(employee);
 
 		try {
 			trans = session.beginTransaction();
 
-            session.save(city);
-            session.save(city2);
             session.save(lang);
             session.save(lang2);
+            session.save(city);
+            session.save(city2);
 
-            session.save(employee);
-            session.save(employee2);
+
 			trans.commit();
 
 		} catch (HibernateException e) {
