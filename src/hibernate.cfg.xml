@@ -23,12 +23,12 @@
             org.hibernate.cache.HashtableCacheProvider
         </property>
 
-        <property name="hibernate.hbm2ddl.auto">create-drop</property>
+        <property name="hibernate.hbm2ddl.auto">create</property>
 
         <!-- Mapping files -->
         <mapping resource="City.hbm.xml"/>
         <mapping resource="Employee.hbm.xml"/>
-        <mapping resource="Company.hbm.xml"/>
+
         <mapping resource="Lang.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

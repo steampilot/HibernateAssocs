@@ -19,13 +19,6 @@
             <one-to-many class="bo.Employee"/>
         </list>
 
-        <list name="Companies" table="company">
-            <key>
-                <column name="company_id" not-null="true"/>
-            </key>
-            <list-index column="indx"/>
-            <one-to-many class="bo.Company"/>
-        </list>
 
     </class>
 </hibernate-mapping>
