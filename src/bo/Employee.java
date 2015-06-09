@@ -9,7 +9,7 @@ public class Employee {
 	private String name;
 	private String street;
 	private City city;
-	private Company company;
+
     private Set<Lang> languages = new HashSet<Lang>();
 
 	public Employee() {
@@ -20,10 +20,10 @@ public class Employee {
 		this.setName(name);
 		this.setStreet(street);
 	}
-	public Employee(String name, String street, Company company, City city) {
+	public Employee(String name, String street, City city) {
 		this.setName(name);
 		this.setStreet(street);
-		this.setCompany(company);
+
 		this.setCity(city);
 	}
 
@@ -51,13 +51,9 @@ public class Employee {
 		this.street = street;
 	}
 
-	public Company getCompany() {
-		return company;
-	}
 
-	public void setCompany(Company company) {
-		this.company = company;
-	}
+
+
 
 	public City getCity() {
 		return city;

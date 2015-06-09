@@ -8,7 +8,7 @@ public class City {
 	private String zip;
 	private String name;
 	private List<Employee> employees = null;
-	private List<Company> companies = null;
+
 
 	public City() {
 
@@ -59,19 +59,7 @@ public class City {
 		employees.add(e);
 	}
 
-	public List<Company> getCompanies() {
-		return companies;
-	}
 
-	public void setCompanies(List<Company> companies) {
-		this.companies = companies;
-	}
 
-	public void addCompany(Company company) {
-		if (companies == null) {
-			companies = new ArrayList<Company>();
-		}
-		this.companies.add(company);
 
-	}
 }

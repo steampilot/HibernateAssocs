@@ -1,6 +1,6 @@
 package test;
 
-import bo.Company;
+
 import bo.Lang;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -56,19 +56,16 @@ public class HibernateTest {
 	public void test() {
 		City city = new City("Basel", "4000");
 		City city2 = new City("Zürich", "8000");
-		Company company = new Company("Google", city);
-		Company company2 = new Company("Google", city2);
+
 		Employee employee = new Employee("Müller", "HauptStrasse 4");
 		Employee employee2 = new Employee("Schmid", "Kirchgasse 1");
 		employee.setCity(city);
 		employee2.setCity(city);
-		employee.setCompany(company);
-		employee2.setCompany(company2);
+
 
 		city.addEmployee(employee);
 		city.addEmployee(employee2);
-		city.addCompany(company);
-		city2.addCompany(company2);
+
 
         Lang lang = new Lang("de-CH", "Swiss German");
         Lang lang2 = new Lang ("en-US", "American English");
@@ -83,8 +80,7 @@ public class HibernateTest {
             session.save(city2);
             session.save(lang);
             session.save(lang2);
-            session.save(company);
-            session.save(company2);
+
             session.save(employee);
             session.save(employee2);
 			trans.commit();
@@ -97,7 +93,7 @@ public class HibernateTest {
 		}
 
 		assertTrue(city.getCityId() == 1 );
-		assertTrue(company.getCity().getCityId() == city.getCityId());
+
         assertTrue(lang.getLangId() > 0);
         assertTrue(employee.getLanguages().contains(lang));
 		
