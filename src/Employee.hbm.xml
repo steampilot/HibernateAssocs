@@ -10,7 +10,7 @@
         </id>
         <property name="Name" column="name" type="string"/>
         <property name="Street" column="street" type="string"/>
-        <many-to-one name="City" class="bo.City" fetch="join">
+        <many-to-one name="City" class="bo.City" fetch="join" lazy="false">
             <column name="city_id" not-null="true"/>
         </many-to-one>
 

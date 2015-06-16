@@ -8,5 +8,4 @@ public interface Dao  {
     public void read();
     public void update();
     public void delete();
-
 }

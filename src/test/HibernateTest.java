@@ -2,10 +2,7 @@ package test;
 
 
 import bo.Lang;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
@@ -20,6 +17,8 @@ import static org.junit.Assert.assertTrue;
 
 import bo.City;
 import bo.Employee;
+
+import java.util.List;
 
 public class HibernateTest {
 
@@ -44,7 +43,7 @@ public class HibernateTest {
 
 	@Before
 	public void setUp() throws Exception {
-		session = sessionFactory.openSession();
+
 	}
 
 	@After
@@ -74,7 +73,7 @@ public class HibernateTest {
         employee.addLanguage(lang2);
         lang.addEmployee(employee);
         lang2.addEmployee(employee);
-
+        session = sessionFactory.openSession();
 		try {
 			trans = session.beginTransaction();
 
@@ -91,12 +90,42 @@ public class HibernateTest {
 				trans.rollback();
 				e.printStackTrace();
 			}
-		}
+		} finally {
+            session.close();
+        }
+        session = sessionFactory.openSession();
+        Query query = session.createQuery("from Employee as e where e.City.CityId = :cityId");
+        query.setParameter("cityId", 1L);
+        List<Employee> emp = query.list();
 
-		assertTrue(city.getCityId() == 1 );
+        session.close();
 
-        assertTrue(lang.getLangId() > 0);
-        assertTrue(employee.getLanguages().contains(lang));
-		
+        employee.setName("NotMüller");
+
+        session = sessionFactory.openSession();
+		try {
+			trans = session.beginTransaction();
+            session.update(city);
+
+
+			trans.commit();
+
+		} catch (HibernateException e) {
+			if (trans != null) {
+				trans.rollback();
+				e.printStackTrace();
+			}
+		} finally {
+            session.close();
+        }
+
+        session = sessionFactory.openSession();
+        query = session.createQuery("from Employee as e where e.City.CityId = :cityId");
+        query.setParameter("cityId", 1L);
+        List<Employee> emp2 = query.list();
+
+        System.out.println(emp);
+        System.out.println(emp2);
+        //assertEquals(emp,emp2);
 	}
 }
